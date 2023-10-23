@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="missatge()">Button</button>
+
+    <button onclick="demanaNom()">Saluda</button>       
+
+
+    <button onclick="demanaNumero()">Multiplica</button> 
+    
+    <script>
+
+        function demanaNom() {      //funció que guarda el nom en una variable al demanar-lo, i respón si no es null
+            let nom = prompt("Escriu el teu nom");
+            if (nom != null) {
+                alert("Benvingut, " + nom);
+            }
+        }
+
+        function demanaNumero() {
+            let valor = prompt("Introdueix un número");
+            console.log("Taula del " + valor + ":");
+            for (var x = 1; x <= 10; x++) {
+                console.log(`${valor} x ${x} = ${valor * x}`);
+            }
+        }
+
+
+        function missatge() {
+            alert("Hello world");
+        }
+
+        function alerta() {
+            alert("missatge");
+        }
+
+        function alerta2() {
+            alert(document.getElementById("texto").value);
+        }
+
+        function multiplicar() {
+            var numero = document.getElementById("numero").value;
+            
+            for (var x = 0; x <= 10; x++) {
+                console.log(numero * x);
+            }
+        }
+    </script>  
+
+    
+    <div>
+        <span onmouseover="alerta()">HOLA</span>
+    </div>
+
+    <div>
+        <img ondragstart="alerta()" src="/home/anxo/Downloads/Diseño sin título.png" width="700" height="500">
+    </div>
+
+    <input id="texto" onchange="alerta2()"></input>
+
+    <input id="numero" onchange="multiplicar()"></input>
+
+
+</body>
+</html>
