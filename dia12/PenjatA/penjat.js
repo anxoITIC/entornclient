@@ -9,22 +9,19 @@ function Penjat() {
 function SeleccioMode(partidesGuanyades, partidesJugades, partidesPerdudes) {
     console.log("1. Iniciar una partida");
     console.log("2. Estadístiques");
-    console.log("3. Sortir del joc");
 
     let seleccio =  prompt("Seleccioni una opció");
 
     //selecció de mode
     if (seleccio == 1) {
-        partida(partidesGuanyades);
+        partida(partidesGuanyades, partidesJugades, partidesPerdudes);
         partidesJugades++;
     } else if (seleccio == 2) {
         Estadistiques(partidesGuanyades, partidesJugades, partidesPerdudes);
-    } else if (seleccio == 3) {
-        Sortir();
     }
 }
 
-function partida(partidesGuanyades) {
+function partida(partidesGuanyades, partidesJugades, partidesPerdudes) {
     var wordToGuess = prompt("Introdueix una paraula:").toLowerCase(); //demana una paraula i la processa
 
     
@@ -38,11 +35,11 @@ function partida(partidesGuanyades) {
 
     console.log("Endevina la paraula: " + guessedWord);
 
-    playGame(wordToGuess, guessedWord, partidesGuanyades);
+    playGame(wordToGuess, guessedWord, partidesGuanyades, partidesJugades, partidesPerdudes);
 
 }
 
-function playGame(wordToGuess, guessedWord, partidesGuanyades) {
+function playGame(wordToGuess, guessedWord, partidesGuanyades, partidesJugades, partidesPerdudes) {
     var maxAttempts = 6; 
     var incorrectAttempts = 0;
     var lletresIncorrectes = "";
@@ -80,10 +77,11 @@ function playGame(wordToGuess, guessedWord, partidesGuanyades) {
     if (guessedWord === wordToGuess) {
         console.log("Enhorabona! Has endevinat la paraula: " + wordToGuess);
         partidesGuanyades++;
-        SeleccioMode(partidesGuanyades);
+        SeleccioMode(partidesGuanyades, partidesJugades, partidesPerdudes);
     } else {
         console.log("GAME OVER");
-        SeleccioMode(partidesGuanyades);
+        partidesPerdudes++;
+        SeleccioMode(partidesGuanyades, partidesJugades, partidesPerdudes);
     }
 }
 
@@ -91,14 +89,11 @@ function playGame(wordToGuess, guessedWord, partidesGuanyades) {
 function Estadistiques(partidesGuanyades, partidesJugades, partidesPerdudes) {
     console.log("ESTADÍSTIQUES");
 
+    //mostrem totes les estadístiques
     console.log("Total de partides: " + partidesJugades);
     console.log("Partides guanyades: " + partidesGuanyades);
     console.log("Partides perdudes: " + partidesPerdudes);
 
-
-}
-
-
-function Sortir() {
+    SeleccioMode(); //un cop mostrades les dades es torna al menú de selecció per no encallar-se en la part d'estadístiques
 
 }
