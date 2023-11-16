@@ -1,3 +1,5 @@
+//versió consola del joc del penjat
+
 function Penjat() {
     let partidesGuanyades = 0;
     let partidesJugades = 0;
